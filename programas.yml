@@ -10,11 +10,6 @@
     - name: Instalar Google Chrome
       win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\chrome_installer.exe -Args '/silent /install' -NoNewWindow -Wait
 
-    - name: Descargar WinSCP
-      win_get_url:
-        url: https://winscp.net/download/WinSCP-6.3.3-Setup.exe/download
-        dest: C:\Users\Administrador\Downloads\ansible\WinSCP-6.3.3-Setup.exe
-
     - name: Instalar WinSCP
       win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\WinSCP-6.3.3-Setup.exe -Args '/silent /install' -NoNewWindow -Wait
 
