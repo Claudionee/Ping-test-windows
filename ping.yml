@@ -1,6 +1,6 @@
 ---
   - name: Instalar y configurar IIS y crear una página web "Hola Mundo"
-    hosts: Ansible2
+    hosts: 192.168.1.52
     tasks:
       - name: Instalar roles de servidor web (IIS)
         win_feature:
