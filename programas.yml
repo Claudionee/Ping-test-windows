@@ -9,10 +9,7 @@
 
     - name: Instalar Google Chrome
       win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\chrome_installer.exe -Args '/silent /install' -NoNewWindow -Wait
-
-    - name: Instalar WinSCP
-      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\WinSCP-6.3.3-Setup.exe -Args '/silent /install' -NoNewWindow -Wait
-
+      
     - name: Descargar PuTTY
       win_get_url:
         url: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.81-installer.msi
