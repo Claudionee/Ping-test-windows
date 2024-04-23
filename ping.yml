@@ -19,9 +19,7 @@
           state: directory
 
       - name: Crear archivo de la página web "Hola Mundo"
-        win_copy:
-          src: index.html
-          dest: C:\inetpub\wwwroot\index.html
+        win_shell: Add-Content -Path C:\inetpub\wwwroot\index.html -Value "<h1>Hola Mundo</h1>"
 
       - name: Reiniciar el servidor
         win_reboot:
