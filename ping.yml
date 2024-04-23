@@ -1,8 +1,29 @@
 ---
-  - name: ping test for windowsclients 
-    hosts: all 
-    become: false 
-    gather_facts: false 
-    tasks: 
-      - name: pingtest 
-        win_ping:
+  - name: Instalar y configurar IIS y crear una página web "Hola Mundo"
+    hosts: Ansible2
+    tasks:
+      - name: Instalar roles de servidor web (IIS)
+        win_feature:
+          name: Web-Server
+          state: present
+
+      - name: Habilitar el servicio de World Wide Web
+        win_service:
+          name: W3SVC
+          start_mode: auto
+          state: started
+
+      - name: Crear directorio para la página web
+        win_file:
+          path: C:\inetpub\wwwroot
+          state: directory
+
+      - name: Crear archivo de la página web "Hola Mundo"
+        win_copy:
+          src: index.html
+          dest: C:\inetpub\wwwroot\index.html
+
+      - name: Reiniciar el servidor
+        win_reboot:
+          reboot_timeout: 300
+          msg: "Reiniciando el servidor después de instalar IIS y configurar la página web 'Hola Mundo'"
