@@ -8,9 +8,7 @@
         dest: C:\Users\Administrador\Downloads\ansible\chrome_installer.exe
 
     - name: Instalar Google Chrome
-      win_package:
-        path: C:\Users\Administrador\Downloads\ansible\chrome_installer.exe
-        state: present
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\chrome_installer.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar WinSCP
       win_get_url:
@@ -18,9 +16,7 @@
         dest: C:\Users\Administrador\Downloads\ansible\WinSCP-5.17.10-Setup.exe
 
     - name: Instalar WinSCP
-      win_package:
-        path: C:\Users\Administrador\Downloads\ansible\WinSCP-5.17.10-Setup.exe
-        state: present
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\WinSCP-5.17.10-Setup.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar PuTTY
       win_get_url:
@@ -28,9 +24,7 @@
         dest: C:\Users\Administrador\Downloads\ansible\putty-64bit-0.76-installer.msi
 
     - name: Instalar PuTTY
-      win_package:
-        path: C:\Users\Administrador\Downloads\ansible\putty-64bit-0.76-installer.msi
-        state: present
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\putty-64bit-0.76-installer.msi -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar Notepad++
       win_get_url:
@@ -38,9 +32,7 @@
         dest: C:\Users\Administrador\Downloads\ansible\npp.8.3.2.Installer.x64.exe
 
     - name: Instalar Notepad++
-      win_package:
-        path: C:\Users\Administrador\Downloads\ansible\npp.8.3.2.Installer.x64.exe
-        state: present
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\npp.8.3.2.Installer.x64.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar WinRAR
       win_get_url:
@@ -48,9 +40,7 @@
         dest: C:\Users\Administrador\Downloads\ansible\winrar-x64-602.exe
 
     - name: Instalar WinRAR
-      win_package:
-        path: C:\Users\Administrador\Downloads\ansible\winrar-x64-602.exe
-        state: present
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\winrar-x64-602.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Reiniciar el servidor
       win_reboot:
