@@ -4,7 +4,7 @@
   tasks:
     - name: Descargar Google Chrome
       win_get_url:
-        url: https://www.google.com/chrome/browser/desktop/index.html?standalone=1
+        url: https://dl.google.com/chrome/install/latest/chrome_installer.exe
         dest: C:\Users\Administrador\Downloads\ansible\chrome_installer.exe
 
     - name: Instalar Google Chrome
@@ -12,7 +12,7 @@
 
     - name: Descargar WinSCP
       win_get_url:
-        url: https://winscp.net/eng/download.php
+        url: https://winscp.net/download/WinSCP-6.3.3-Setup.exe/download
         dest: C:\Users\Administrador\Downloads\ansible\WinSCP-6.3.3-Setup.exe
 
     - name: Instalar WinSCP
@@ -20,7 +20,7 @@
 
     - name: Descargar PuTTY
       win_get_url:
-        url: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+        url: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.81-installer.msi
         dest: C:\Users\Administrador\Downloads\ansible\putty-64bit-0.81-installer.msi
 
     - name: Instalar PuTTY
