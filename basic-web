@@ -1,0 +1,23 @@
+---
+  - name: Instalar IIS y crear una página web en Windows Server
+    hosts: tu_servidor_windows
+    tasks:
+    - name: Instalar IIS
+      win_feature:
+        name: Web-Server
+        state: present
+
+    - name: Crear un directorio para el sitio web
+      win_file:
+        path: C:\inetpub\wwwroot\hola_mundo
+        state: directory
+
+    - name: Crear un archivo index.html
+      win_template:
+        src: templates/index.html.j2
+        dest: C:\inetpub\wwwroot\hola_mundo\index.html
+
+    - name: Reiniciar el servicio de IIS
+      win_service:
+        name: W3SVC
+        state: restarted
