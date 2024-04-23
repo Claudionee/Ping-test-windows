@@ -4,7 +4,7 @@
   tasks:
     - name: Descargar Google Chrome
       win_get_url:
-        url: https://dl.google.com/chrome/install/latest/chrome_installer.exe
+        url: https://www.google.com/chrome/browser/desktop/index.html?standalone=1
         dest: C:\Users\Administrador\Downloads\ansible\chrome_installer.exe
 
     - name: Instalar Google Chrome
@@ -12,35 +12,35 @@
 
     - name: Descargar WinSCP
       win_get_url:
-        url: https://winscp.net/download/WinSCP-5.17.10-Setup.exe
-        dest: C:\Users\Administrador\Downloads\ansible\WinSCP-5.17.10-Setup.exe
+        url: https://winscp.net/eng/download.php
+        dest: C:\Users\Administrador\Downloads\ansible\WinSCP-6.3.3-Setup.exe
 
     - name: Instalar WinSCP
-      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\WinSCP-5.17.10-Setup.exe -Args '/silent /install' -NoNewWindow -Wait
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\WinSCP-6.3.3-Setup.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar PuTTY
       win_get_url:
-        url: https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi
-        dest: C:\Users\Administrador\Downloads\ansible\putty-64bit-0.76-installer.msi
+        url: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+        dest: C:\Users\Administrador\Downloads\ansible\putty-64bit-0.81-installer.msi
 
     - name: Instalar PuTTY
-      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\putty-64bit-0.76-installer.msi -Args '/silent /install' -NoNewWindow -Wait
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\putty-64bit-0.81-installer.msi -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar Notepad++
       win_get_url:
-        url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.3.2/npp.8.3.2.Installer.x64.exe
-        dest: C:\Users\Administrador\Downloads\ansible\npp.8.3.2.Installer.x64.exe
+        url: https://notepad-plus-plus.org/downloads/v8.6.5/
+        dest: C:\Users\Administrador\Downloads\ansible\npp.8.6.5.Installer.x64.exe
 
     - name: Instalar Notepad++
-      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\npp.8.3.2.Installer.x64.exe -Args '/silent /install' -NoNewWindow -Wait
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\npp.8.6.5.Installer.x64.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Descargar WinRAR
       win_get_url:
-        url: https://www.rarlab.com/rar/winrar-x64-602.exe
-        dest: C:\Users\Administrador\Downloads\ansible\winrar-x64-602.exe
+        url: https://www.win-rar.com/download.html
+        dest: C:\Users\Administrador\Downloads\ansible\winrar-x64-7.00.exe
 
     - name: Instalar WinRAR
-      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\winrar-x64-602.exe -Args '/silent /install' -NoNewWindow -Wait
+      win_shell: Start-Process -FilePath C:\Users\Administrador\Downloads\ansible\winrar-x64-7.00.exe -Args '/silent /install' -NoNewWindow -Wait
 
     - name: Reiniciar el servidor
       win_reboot:
