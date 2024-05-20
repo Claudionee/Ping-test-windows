@@ -18,7 +18,7 @@
       vars:
         packages:
         - apache2
-        - mysql-server
+        - mariadb-server
         - php
         - php-mysql
         - libapache2-mod-php
