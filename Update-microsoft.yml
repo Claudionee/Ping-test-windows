@@ -1,13 +1,12 @@
 ---
-- hosts: 192.168.1.52
-  gather_facts: no
-  tasks:
-    - name: Actualizar todos los paquetes del sistema
-      win_updates:
-        category_names: ['CriticalUpdates','SecurityUpdates']
-        log_path: C:\\ansible_wu.txt
-      register: updates_result
+  - hosts: 192.168.1.52
+    gather_facts: no
+    tasks:
+      - name: Actualizar todos los paquetes del sistema
+        win_updates:
+          category_names: ['CriticalUpdates','SecurityUpdates']
+          log_path: C:\\ansible_wu.txt
+        register: updates_result
 
-    - name: Reiniciar la máquina si es necesario
-      win_reboot:
-      when: updates_result.reboot_required
+      - name: Reiniciar la máquina siempre
+        win_reboot:
