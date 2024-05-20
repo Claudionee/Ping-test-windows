@@ -1,0 +1,5 @@
+---
+- hosts: tu_maquina_linux
+  tasks:
+    - name: Hacer ping a la máquina Linux
+      ping:
