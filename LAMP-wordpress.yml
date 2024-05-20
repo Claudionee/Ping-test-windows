@@ -2,10 +2,10 @@
 - hosts: 192.168.1.53
   become: yes
   vars:
-    mysql_root_password: 'pass123'
+    mysql_root_password: 'pass1234'
     mysql_db: 'wordpress'
     mysql_user: 'admin'
-    mysql_password: 'pass123'
+    mysql_password: 'pass1234'
   tasks:
     - name: Actualizar todos los paquetes del sistema
       apt:
@@ -34,22 +34,24 @@
         name: pymysql
         executable: pip3
 
-    - name: Crear la base de datos de WordPress
-      mysql_db:
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        name: "{{ mysql_db }}"
-        state: present
-      become: yes
-      become_method: sudo
-
-    - name: Crear el usuario de WordPress
+    - name: Crear el usuario de MySQL
       mysql_user:
+        login_unix_socket: /var/run/mysqld/mysqld.sock
         login_user: root
         login_password: "{{ mysql_root_password }}"
         name: "{{ mysql_user }}"
         password: "{{ mysql_password }}"
-        priv: "{{ mysql_db }}.*:ALL"
+        priv: "*.*:ALL,GRANT"
+        state: present
+      become: yes
+      become_method: sudo
+
+    - name: Crear la base de datos de WordPress
+      mysql_db:
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        login_user: "{{ mysql_user }}"
+        login_password: "{{ mysql_password }}"
+        name: "{{ mysql_db }}"
         state: present
       become: yes
       become_method: sudo
