@@ -1,90 +1,14 @@
 ---
 - hosts: 192.168.1.53
   become: yes
-  vars:
-    mysql_root_password: 'pass1234'
-    mysql_db: 'wordpress'
-    mysql_user: 'admin'
-    mysql_password: 'pass1234'
   tasks:
-    - name: Actualizar todos los paquetes del sistema
+    - name: Instalar Apache
       apt:
-        update_cache: yes
-        upgrade: 'yes'
-
-    - name: Instalar el servidor LAMP
-      apt:
-        name: "{{ packages }}"
-      vars:
-        packages:
-        - apache2
-        - mariadb-server
-        - php
-        - php-mysql
-        - libapache2-mod-php
-        - php-cli
-
-    - name: Instalar pip3
-      apt:
-        name: python3-pip
-        state: present
-
-    - name: Verificar la instalación de pip3
-      command: pip3 --version
-
-    - name: Instalar el módulo PyMySQL
-      pip:
-        name: pymysql
-        executable: pip3
-
-    - name: Crear el usuario de MySQL
-      mysql_user:
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        name: "{{ mysql_user }}"
-        password: "{{ mysql_password }}"
-        priv: "*.*:ALL,GRANT"
-        state: present
-      become: yes
-      become_method: sudo
-
-    - name: Crear la base de datos de WordPress
-      mysql_db:
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-        login_user: "{{ mysql_user }}"
-        login_password: "{{ mysql_password }}"
-        name: "{{ mysql_db }}"
-        state: present
-      become: yes
-      become_method: sudo
-
-    - name: Instalar Python pip (necesario para instalar 'python-mysqldb')
-      apt:
-        name: python-pip
-        state: present
-
-    - name: Instalar 'python-mysqldb' (necesario para usar 'mysql_db' y 'mysql_user')
-      pip:
-        name: python-mysqldb
-
-    - name: Instalar WordPress
-      unarchive:
-        src: https://wordpress.org/latest.tar.gz
-        dest: /var/www/html
-        remote_src: yes
-
-    - name: Actualizar el archivo de configuración de WordPress con las credenciales de la base de datos
-      replace:
-        path: /var/www/html/wordpress/wp-config.php
-        regexp: "{{ item.regexp }}"
-        replace: "{{ item.replace }}"
-      with_items:
-        - { regexp: "define\\('DB_NAME', 'database_name_here'\\);", replace: "define('DB_NAME', '{{ mysql_db }}');" }
-        - { regexp: "define\\('DB_USER', 'username_here'\\);", replace: "define('DB_USER', '{{ mysql_user }}');" }
-        - { regexp: "define\\('DB_PASSWORD', 'password_here'\\);", replace: "define('DB_PASSWORD', '{{ mysql_password }}');" }
-
-    - name: Reiniciar Apache para que los cambios tengan efecto
-      service:
         name: apache2
-        state: restarted
+        state: present
+        update_cache: yes
+
+    - name: Crear página de prueba
+      copy:
+        content: "<html><head><title>Test Ansible exitoso!</title></head><body><h1>Test Ansible exitoso!</h1></body></html>"
+        dest: /var/www/html/index.html
