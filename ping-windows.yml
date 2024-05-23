@@ -1,6 +1,6 @@
 ---
   - name: Ping a máquinas Windows
-    hosts: 192.168.1.52,192.168.1.54
+    hosts: 192.168.1.52
     gather_facts: no
     tasks:
       - name: Hacer ping a las máquinas Windows
