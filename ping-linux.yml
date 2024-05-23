@@ -1,5 +1,6 @@
 ---
-  - hosts: 192.168.1.53
+  - hosts: 192.168.1.53:192.168.1.55
+    gather_facts: no
     tasks:
-      - name: Hacer ping a la máquina Linux
+      - name: Hacer ping a las máquinas
         ping:
