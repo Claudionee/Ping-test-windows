@@ -1,0 +1,6 @@
+---
+  - hosts: 192.168.1.55
+    gather_facts: no
+    tasks:
+      - name: Hacer ping a las máquinas
+        ping:
